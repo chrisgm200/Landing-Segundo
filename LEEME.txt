@@ -1,0 +1,8 @@
+Landing page responsive de la Comisión de Escucha y Protección.
+
+Archivos: index.html, styles.css, script.js y assets/.
+Abre index.html en un navegador o sube toda la carpeta a tu hosting.
+
+Nota sobre logos: los archivos de marca se recortaron de la imagen del manual que se adjuntó en el chat. `arzobispo.png` es el recorte disponible de la leyenda “Arzobispado de Lima” que aparece debajo del imagotipo de la Comisión; no se adjuntó un archivo independiente del logo institucional del Arzobispado. Sustituye assets/arzobispo.png por el archivo oficial independiente si lo tienes, conservando ese nombre.
+
+Los cargos y reseñas del equipo se mantienen como marcadores porque el material de origen no los especifica.
