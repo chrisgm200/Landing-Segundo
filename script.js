@@ -1,7 +1,7 @@
 /* ============================================================
    CONFIGURACIÓN
    true  = las animaciones SIEMPRE se ven (aunque el sistema operativo tenga
-           activado "reducir movimiento" / "mostrar animaciones" desactivado).
+           activado "reducir movimiento").
    false = se respeta esa preferencia del sistema (solo desvanecimientos suaves).
    ============================================================ */
 const FORCE_ANIMATIONS = true;
@@ -31,6 +31,24 @@ navBackdrop.addEventListener('click', () => setMenu(false));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 window.addEventListener('resize', () => { if (window.innerWidth > MENU_BREAKPOINT) setMenu(false); });
+
+/* ---------- INDICADOR DEL MENÚ (se traslada con la navegación) ---------- */
+const navIndicator = document.querySelector('.nav-indicator');
+function moveIndicator() {
+  if (!navIndicator) return;
+  const active = navLinks.querySelector('a.active');
+  if (!active || window.innerWidth <= MENU_BREAKPOINT) {
+    navIndicator.style.opacity = '0';
+    return;
+  }
+  navIndicator.style.opacity = '1';
+  navIndicator.style.width = active.offsetWidth + 'px';
+  navIndicator.style.height = active.offsetHeight + 'px';
+  navIndicator.style.transform = 'translate(' + active.offsetLeft + 'px,' + active.offsetTop + 'px)';
+}
+window.addEventListener('resize', moveIndicator);
+window.addEventListener('load', moveIndicator);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
 
 /* ---------- ANIMACIÓN AL HACER SCROLL (bajando y subiendo) ----------
    Entra en pantalla -> aparece. Sale -> se oculta, para repetirse en ambos sentidos.
@@ -70,6 +88,7 @@ const activeObserver = new IntersectionObserver(entries => {
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
+    moveIndicator();
   });
 }, { rootMargin: '-35% 0px -55% 0px' });
 sections.forEach(section => activeObserver.observe(section));
@@ -96,6 +115,8 @@ function updateScroll() {
   if (progressBar) progressBar.style.transform = 'scaleX(' + (docH > 0 ? clamp(y / docH, 0, 1) : 0) + ')';
 
   if (routeCards.length) {
+    const lastIndex = routeCards.length - 1;
+
     // Las tarjetas se apilan: la anterior se encoge un poco cuando la siguiente la cubre.
     routeCards.forEach((card, i) => {
       const next = routeCards[i + 1];
@@ -105,13 +126,23 @@ function updateScroll() {
       card.style.setProperty('--s', (1 - p * 0.06).toFixed(4));
     });
 
-    // Barra de progreso y contador de pasos (solo visibles en escritorio)
+    // Paso actual: el número de cada tarjeta se vuelve amarillo cuando se llega a ella
+    let current = 1;
+    routeCards.forEach((card, i) => {
+      const reached = i === 0 || card.getBoundingClientRect().top <= stickyTops[i] + 24;
+      card.classList.toggle('reached', reached);
+      if (reached) current = i + 1;
+    });
+
+    // Barra de progreso: llega al 100 % justo cuando aparece el paso 5
     const rect = routeList.getBoundingClientRect();
-    const last = routeCards[routeCards.length - 1];
-    const total = rect.height - last.offsetHeight;
-    const progress = total > 0 ? clamp((stickyTops[0] - rect.top) / total, 0, 1) : 0;
+    const last = routeCards[lastIndex];
+    const padBottom = parseFloat(getComputedStyle(routeList).paddingBottom) || 0;
+    const naturalLast = rect.height - last.offsetHeight - padBottom;
+    const span = naturalLast - (stickyTops[lastIndex] - stickyTops[0]);
+    const progress = span > 0 ? clamp((stickyTops[0] - rect.top) / span, 0, 1) : 0;
     if (routeBarFill) routeBarFill.style.transform = 'scaleX(' + progress.toFixed(3) + ')';
-    if (routeCountNow) routeCountNow.textContent = Math.min(routeCards.length, Math.floor(progress * routeCards.length) + 1);
+    if (routeCountNow) routeCountNow.textContent = current;
   }
   ticking = false;
 }
@@ -124,7 +155,7 @@ window.addEventListener('load', () => { measureRoute(); updateScroll(); });
 measureRoute();
 updateScroll();
 
-/* ---------- CONCEPTOS (pestañas) ---------- */
+/* ---------- TIPOS DE ABUSO SEXUAL (pestañas + flechas) ---------- */
 const conceptData = [
   ['Agresión y violación sexual', 'Actos que atentan contra la libertad sexual mediante violencia o intimidación. Se configura como violación al existir acceso carnal (vaginal, anal o bucal) o penetración de objetos o miembros corporales.'],
   ['Abuso sexual directo', 'Actos contra la indemnidad o libertad sexual sin violencia física o intimidación, ni consentimiento válido, aprovechándose de una posición de autoridad o superioridad para coaccionar a la víctima.'],
@@ -136,29 +167,38 @@ const conceptData = [
 ];
 const conceptButtons = [...document.querySelectorAll('.concept-tab')];
 const conceptPanel = document.querySelector('.concept-panel');
+const conceptBody = conceptPanel.querySelector('.concept-body');
+const conceptDots = [...conceptPanel.querySelectorAll('.concept-dots i')];
+let conceptCurrent = 0;
 
 function showConcept(i) {
-  const [title, description] = conceptData[i];
+  conceptCurrent = (i + conceptData.length) % conceptData.length;
+  const [title, description] = conceptData[conceptCurrent];
   conceptButtons.forEach((button, index) => {
-    button.classList.toggle('active', index === i);
-    button.setAttribute('aria-selected', String(index === i));
+    const on = index === conceptCurrent;
+    button.classList.toggle('active', on);
+    button.setAttribute('aria-selected', String(on));
   });
-  conceptPanel.style.animation = 'none';
-  void conceptPanel.offsetWidth;
-  conceptPanel.style.animation = 'panel-in .35s both';
-  conceptPanel.querySelector('.concept-index').textContent = String(i + 1).padStart(2, '0') + ' / 07';
-  conceptPanel.querySelector('h3').textContent = title;
-  conceptPanel.querySelector('p').textContent = description;
+  conceptDots.forEach((dot, index) => dot.classList.toggle('on', index === conceptCurrent));
+  conceptPanel.dataset.tone = String(conceptCurrent);
+  conceptBody.style.animation = 'none';
+  void conceptBody.offsetWidth;
+  conceptBody.style.animation = 'panel-in .35s both';
+  conceptBody.querySelector('h3').textContent = title;
+  conceptBody.querySelector('.concept-text').textContent = description;
 }
 conceptButtons.forEach(button => button.addEventListener('click', () => showConcept(Number(button.dataset.concept))));
+conceptPanel.querySelector('.concept-prev').addEventListener('click', () => showConcept(conceptCurrent - 1));
+conceptPanel.querySelector('.concept-next').addEventListener('click', () => showConcept(conceptCurrent + 1));
 
-/* ---------- PREVENCIÓN (acordeón nativo accesible) ---------- */
-document.querySelectorAll('.prevention-card').forEach(card => {
-  card.addEventListener('toggle', () => {
-    const label = card.querySelector('.advice-toggle');
-    if (label) {
-      label.childNodes[0].textContent = card.open ? 'Ocultar consejo ' : 'Ver consejo ';
-      label.setAttribute('aria-expanded', String(card.open));
-    }
+/* ---------- ACORDEONES (cada tarjeta se abre sola, sin mover las de al lado) ---------- */
+function bindDetails(selector, closedText, openText) {
+  document.querySelectorAll(selector).forEach(card => {
+    card.addEventListener('toggle', () => {
+      const label = card.querySelector('.t-label');
+      if (label) label.textContent = card.open ? openText : closedText;
+    });
   });
-});
+}
+bindDetails('.team-card', 'Ver reseña', 'Ver menos');
+bindDetails('.prevention-card', 'Ver consejo', 'Ver menos');
