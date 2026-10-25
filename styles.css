@@ -64,10 +64,10 @@ button{font:inherit}
 .glow-three{width:clamp(150px,17vw,300px);height:clamp(150px,17vw,300px);background:var(--yellow);opacity:.88;right:9%;bottom:-70px;animation-delay:-3s}
 .glow-four{width:clamp(130px,14vw,240px);height:clamp(130px,14vw,240px);background:var(--teal);opacity:.85;left:8%;bottom:-80px;animation-delay:-9s}
 .hero-content{max-width:920px;width:100%;text-align:center;position:relative;z-index:1}
-.hero-logo{width:min(640px,88vw);height:auto;max-height:none;object-fit:contain;margin:0 auto 34px;animation:pop-in .8s both}
+.hero-logo{width:min(640px,88vw);height:auto;max-height:none;object-fit:contain;margin:0 auto 40px;animation:pop-in .8s both}
 .eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;color:var(--teal);margin:0 0 13px}
-.hero-badge{margin:0 auto 30px;font-size:clamp(11px,1.1vw,13px);font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
-.hero h1{font-size:clamp(22px,2.7vw,34px);line-height:1.2;letter-spacing:-.03em;font-weight:700;margin:0 auto 14px;color:var(--teal-dark)}
+.hero-badge{margin:0 auto 36px;font-size:clamp(11px,1.1vw,13px);font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.hero h1{font-size:clamp(22px,2.7vw,34px);line-height:1.2;letter-spacing:-.03em;font-weight:700;margin:0 auto 18px;color:var(--teal-dark)}
 .button{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:13px 28px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;text-align:center;transition:transform .2s,box-shadow .2s,background .25s,color .25s;line-height:1.4}
 .button:hover{transform:translateY(-3px);box-shadow:0 12px 24px #153e4220}
 .button .arrow{display:inline-block;transition:transform .25s var(--ease)}
@@ -84,7 +84,7 @@ button{font:inherit}
 .scroll-cue svg{display:block}
 
 /* Títulos de sección (sin numeración ni punto final) */
-.section-heading{display:block;margin-bottom:26px}
+.section-heading{display:block;margin-bottom:38px}
 .section-heading h2{font-size:clamp(36px,5.2vw,68px);line-height:1.05;letter-spacing:-.06em;margin:0;font-weight:700}
 
 /* Bento / tiles */
@@ -98,6 +98,11 @@ button{font:inherit}
 .tile-lime{background:var(--green);color:#fff}
 .tile-white{background:#fff}
 .tile-label{display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;opacity:.85;margin-bottom:18px}
+
+/* ============ COMILLAS (apertura y cierre idénticas) ============ */
+.q{color:var(--yellow);font-weight:800;font-size:1em;line-height:1;font-style:normal}
+.q-open{margin-right:.14em}
+.q-close{margin-left:.14em}
 
 /* ============ INICIO (ampliado) ============ */
 .inicio-tile{
@@ -113,10 +118,10 @@ button{font:inherit}
 .ic-2{width:240px;height:240px;background:var(--yellow);opacity:.5;left:-80px;bottom:-100px}
 .ic-3{width:130px;height:130px;background:var(--teal2);opacity:.55;right:40%;bottom:-48px}
 .inicio-main{position:relative;min-width:0}
-.inicio-main .tile-label{color:var(--sun);opacity:1;margin-bottom:20px}
-.inicio-tile h3{font-size:clamp(38px,5.6vw,82px);letter-spacing:-.06em;line-height:1;margin:0 0 26px}
+.inicio-main .tile-label{color:var(--sun);opacity:1;margin-bottom:22px}
+.inicio-tile h3{font-size:clamp(38px,5.6vw,82px);letter-spacing:-.06em;line-height:1;margin:0 0 30px}
 .inicio-tile h3 span{color:var(--yellow)}
-.inicio-tile p{font-size:clamp(16px,1.6vw,19px);line-height:1.85;margin:0 0 28px;max-width:580px;color:#eaf8f6}
+.inicio-tile p{font-size:clamp(16px,1.6vw,19px);line-height:1.85;margin:0 0 30px;max-width:580px;color:#eaf8f6}
 .inicio-pillars{list-style:none;margin:0;padding:0;display:grid;gap:14px;position:relative;min-width:0}
 .inicio-pillars li{
   display:grid;grid-template-columns:58px 1fr;column-gap:18px;row-gap:2px;align-items:center;
@@ -132,25 +137,25 @@ button{font:inherit}
 
 /* Conócenos */
 .about-who{grid-column:span 7;min-height:345px}
-.about-who h3{font-size:clamp(28px,3.2vw,42px);letter-spacing:-.05em;line-height:1.1;margin:0 0 18px;max-width:540px}
-.about-who p,.about-mission p,.about-origin p{font-size:15px;line-height:1.8;margin:0 0 13px}
-.about-mission{grid-column:span 5;min-height:345px;padding-bottom:70px}
+.about-who h3{font-size:clamp(28px,3.2vw,42px);letter-spacing:-.05em;line-height:1.1;margin:0 0 20px;max-width:540px}
+.about-who p,.about-mission p,.about-origin p{font-size:15px;line-height:1.8;margin:0 0 16px}
+.about-mission{grid-column:span 5;min-height:345px}
 .about-mission p{font-size:16px}
-.mission-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:12px;position:relative;z-index:1}
-.mission-list li{position:relative;padding-left:26px;font-size:16px;line-height:1.6}
-.mission-list li:before{content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;border-radius:50%;background:var(--teal)}
+.mission-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:16px;position:relative;z-index:1}
+.mission-list li{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:16px;font-size:16px;line-height:1.55}
+.mission-icon{width:56px;height:56px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 14px rgba(20,60,62,.12)}
+.mission-icon img{width:100%;height:100%;object-fit:contain;padding:7px}
 .mission-list strong{color:var(--teal-dark)}
-.tile-icon{position:absolute;right:28px;bottom:5px;font-size:85px;color:var(--teal);opacity:.18}
 .photo{position:relative;margin:0;overflow:hidden;border-radius:var(--radius);background:linear-gradient(135deg,var(--blue),var(--mint) 55%,var(--cream))}
 .photo:before{content:"Foto de apoyo";position:absolute;inset:0;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--teal);opacity:.45}
 .photo img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
 .about-photo{grid-column:span 4;min-height:240px}
 /* Origen: más compacto para no pesar más que "Quiénes somos" */
 .about-origin{grid-column:span 8;padding:clamp(22px,2.6vw,32px) clamp(24px,3vw,38px)}
-.about-origin .tile-label{margin-bottom:8px}
-.about-origin p{max-width:760px;font-size:14.5px;line-height:1.7;margin:0 0 9px}
-.decree{font-size:clamp(22px,2.6vw,32px);letter-spacing:-.04em;line-height:1.2;color:var(--blue-text);margin:0 0 12px}
-.section-intro{max-width:780px;color:var(--muted);font-size:17px;margin:-7px 0 27px}
+.about-origin .tile-label{margin-bottom:10px}
+.about-origin p{max-width:760px;font-size:14.5px;line-height:1.7;margin:0 0 12px}
+.decree{font-size:clamp(22px,2.6vw,32px);letter-spacing:-.04em;line-height:1.2;color:var(--blue-text);margin:0 0 16px}
+.section-intro{max-width:780px;color:var(--muted);font-size:17px;margin:0 0 36px}
 
 /* Equipo */
 .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);align-items:start}
@@ -171,18 +176,19 @@ button{font:inherit}
 .team-card[open] .team-toggle b{transform:rotate(45deg)}
 .team-card>p{margin:0;padding:6px 10px 12px;color:var(--muted);font-size:14px}
 .team-card[open]>p{animation:panel-in .35s both}
-.papal-quote{margin:var(--gap) 0 0;padding:35px 45px;border-radius:var(--radius);background:var(--teal-dark);color:#fff;display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px}
-.quote-mark{font-size:110px;color:var(--yellow);font-weight:800;line-height:.8}
-.papal-quote p{font-size:clamp(22px,3vw,36px);letter-spacing:-.04em;line-height:1.25;margin:0}
-.papal-quote cite{grid-column:2;font-style:normal;font-size:14px;font-weight:600;opacity:.9;margin-top:5px}
+
+/* Cita del Papa (comillas de apertura y cierre iguales) */
+.papal-quote{margin:calc(var(--gap) + 14px) 0 0;padding:40px 48px;border-radius:var(--radius);background:var(--teal-dark);color:#fff;display:block}
+.papal-quote p{font-size:clamp(22px,3vw,36px);letter-spacing:-.04em;line-height:1.3;margin:0}
+.papal-quote cite{display:block;font-style:normal;font-size:14px;font-weight:600;opacity:.9;margin-top:20px}
 
 /* ============ RUTA ============ */
 .route-section{display:grid;grid-template-columns:.8fr 1.2fr;column-gap:45px;align-items:start}
 .route-side{position:sticky;top:120px;align-self:start;min-width:0}
-.route-side .section-heading{margin-bottom:20px}
+.route-side .section-heading{margin-bottom:26px}
 .route-side .section-heading h2{font-size:clamp(34px,4.2vw,58px)}
 .route-intro{margin:0;max-width:420px;color:var(--muted)}
-.route-progress{margin-top:30px;max-width:420px}
+.route-progress{margin-top:32px;max-width:420px}
 .route-bar{height:6px;border-radius:99px;background:rgba(0,125,124,.14);overflow:hidden}
 .route-bar i{display:block;height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,var(--green2),var(--teal2),var(--yellow));transform:scaleX(0);transform-origin:left;transition:transform .15s linear}
 .route-count{display:block;margin-top:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
@@ -190,7 +196,7 @@ button{font:inherit}
 /* padding inferior: la barra llega al 100% en el paso 5 y se mantiene un momento antes de salir */
 .route-list{display:grid;gap:14px;position:relative;min-width:0;padding-bottom:150px}
 .route-card{--base:115px;--step:15px;--i:0;--s:1;
-  border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:92px 1fr 56px;gap:20px;align-items:start;min-height:205px;
+  border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:92px 1fr 80px;gap:22px;align-items:start;min-height:205px;
   position:sticky;top:calc(var(--base) + var(--i) * var(--step));
   scale:var(--s);transform-origin:50% 0;box-shadow:0 -10px 28px rgba(20,60,62,.10)}
 .route-card:nth-child(1){--i:0}.route-card:nth-child(2){--i:1}.route-card:nth-child(3){--i:2}.route-card:nth-child(4){--i:3}.route-card:nth-child(5){--i:4}
@@ -199,20 +205,22 @@ button{font:inherit}
 .route-badge small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
 .route-badge b{font-size:56px;font-weight:800;line-height:1.02;letter-spacing:-.06em;color:#fff;transition:color .4s ease,transform .4s var(--ease)}
 .route-card.reached .route-badge b{color:var(--yellow);transform:scale(1.06)}
-.route-card h3{font-size:22px;letter-spacing:-.04em;line-height:1.2;margin:0 0 12px}
-.route-card p{font-size:14.5px;line-height:1.75;margin:0 0 9px}
-.route-icon{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.7);color:var(--teal)}
-.route-icon svg{width:28px;height:28px}
-.route-card.tile-teal .route-icon,.route-card.tile-lime .route-icon{background:rgba(255,255,255,.2);color:#fff}
+.route-card h3{font-size:22px;letter-spacing:-.04em;line-height:1.2;margin:0 0 14px}
+.route-card p{font-size:14.5px;line-height:1.75;margin:0 0 10px}
+/* Íconos de los pasos (PNG en círculo blanco) */
+.route-icon{width:80px;height:80px;border-radius:50%;display:grid;place-items:center;background:#fff;overflow:hidden;box-shadow:0 8px 18px rgba(20,60,62,.14)}
+.route-icon img{width:100%;height:100%;object-fit:contain;padding:9px}
 
 /* Información */
-.subsection-heading{margin:70px 0 22px}
-.subsection-heading.first{margin-top:10px}
-.subsection-heading h3{font-size:clamp(26px,3.4vw,42px);letter-spacing:-.05em;line-height:1.12;margin:0 0 8px;max-width:980px}
+.subsection-heading{margin:84px 0 28px}
+.subsection-heading.first{margin-top:0}
+.subsection-heading h3{font-size:clamp(26px,3.4vw,42px);letter-spacing:-.05em;line-height:1.15;margin:0 0 16px;max-width:980px}
 .subsection-heading p{margin:0;color:var(--muted);font-size:17px;max-width:780px}
-.definition{padding:clamp(28px,4.5vw,56px);display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,38px);align-items:center;border-radius:var(--radius)}
-.definition-icon{display:block;width:clamp(72px,9vw,110px)}
-.definition-icon svg{width:100%;height:auto}
+.subsection-heading p+p{margin-top:8px}
+.definition{padding:clamp(28px,4.5vw,56px);display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,3.5vw,44px);align-items:center;border-radius:var(--radius)}
+/* Ícono de definición: círculo blanco con el PNG */
+.definition-icon{display:block;width:clamp(96px,11vw,140px);height:clamp(96px,11vw,140px);border-radius:50%;background:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.definition-icon img{width:100%;height:100%;object-fit:contain;padding:6px}
 .definition p{font-size:clamp(16px,1.7vw,20px);line-height:1.75;margin:0}
 
 /* Tipos (pestañas) */
@@ -250,8 +258,8 @@ button{font:inherit}
 .prevention-card summary{cursor:pointer;list-style:none;display:block}
 .prevention-photo{aspect-ratio:16/10;border-radius:22px;margin-bottom:22px}
 .prevention-card summary>*:not(.prevention-photo){margin-left:10px;margin-right:10px}
-.letter{display:block;font-size:64px;line-height:1;font-weight:800;letter-spacing:-.08em;color:var(--teal);margin-bottom:10px}
-.prevention-card h4{font-size:24px;line-height:1.15;letter-spacing:-.045em;margin:0 10px 13px}
+.letter{display:block;font-size:64px;line-height:1;font-weight:800;letter-spacing:-.08em;color:var(--teal);margin-bottom:12px}
+.prevention-card h4{font-size:24px;line-height:1.15;letter-spacing:-.045em;margin:0 10px 14px}
 .prevention-card summary>p{font-size:14px;color:var(--muted);line-height:1.8;margin:0 10px 22px}
 .advice-toggle{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;font-weight:800;color:var(--teal);padding-top:15px;border-top:1px solid #007d7c26}
 .advice-toggle b{font-size:22px;transition:transform .25s}
@@ -293,17 +301,17 @@ button{font:inherit}
 .light-link{display:inline-flex;margin:0 28px 28px;padding:11px 20px;border-radius:100px;background:var(--red);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:background .25s,transform .2s}
 .light[open] .light-link{animation:panel-in .4s .36s both}
 .light-link:hover,.light-link:focus-visible{background:#9f332b;transform:translateY(-2px)}
-.hint{margin-top:6px!important;font-size:14px!important;font-weight:600;color:var(--teal)!important}
+.hint{margin-top:10px!important;font-size:14px!important;font-weight:600;color:var(--teal)!important}
 
 /* Contacto */
 .contact-section{padding-top:65px;padding-bottom:90px}
 .contact-card{background:var(--teal);border-radius:36px;min-height:470px;position:relative;overflow:hidden;color:#fff;padding:clamp(30px,6vw,78px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4vw,56px);align-items:center}
 .contact-copy{position:relative;z-index:2;min-width:0}
-.contact-copy .eyebrow{display:block;color:#d9f2ee;font-size:14px;letter-spacing:.14em;margin-bottom:14px}
-.contact-copy h2{font-size:clamp(45px,7vw,82px);line-height:1;letter-spacing:-.065em;margin:0 0 20px}
-.contact-copy>p{max-width:560px;font-size:18px;line-height:1.75;color:#eaf8f6;margin:0 0 26px}
+.contact-copy .eyebrow{display:block;color:#d9f2ee;font-size:14px;letter-spacing:.14em;margin-bottom:18px}
+.contact-copy h2{font-size:clamp(45px,7vw,82px);line-height:1;letter-spacing:-.065em;margin:0 0 26px}
+.contact-copy>p{max-width:560px;font-size:18px;line-height:1.75;color:#eaf8f6;margin:0 0 32px}
 .contact-quote{margin:0;padding-left:20px;border-left:4px solid var(--yellow);max-width:560px}
-.contact-quote p{font-size:16px;line-height:1.7;margin:0 0 6px;color:#fff}
+.contact-quote p{font-size:16px;line-height:1.7;margin:0 0 8px;color:#fff}
 .contact-quote cite{font-style:normal;font-size:14px;font-weight:600;opacity:.9}
 .contact-actions{position:relative;z-index:2;display:grid;gap:16px;min-width:0}
 .contact-link{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:22px 24px;border-radius:26px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);text-decoration:none;color:#fff;transition:background .25s,transform .25s,color .25s}
@@ -430,9 +438,10 @@ body.menu-open .wa-float{pointer-events:none}
   .section{width:calc(100% - 36px)}
   .route-section{grid-template-columns:1fr;row-gap:10px}
   .route-side{position:static}
-  .route-intro{max-width:720px;margin-bottom:22px}
+  .route-intro{max-width:720px;margin-bottom:26px}
   .route-progress{display:none}
-  .route-card{--base:100px;--step:12px}
+  .route-card{--base:100px;--step:12px;grid-template-columns:92px 1fr 70px}
+  .route-icon{width:70px;height:70px}
   .route-list{padding-bottom:90px}
   .about-who{grid-column:span 7}
   .about-mission{grid-column:span 5}
@@ -499,9 +508,9 @@ body.menu-open .wa-float{pointer-events:none}
 
   /* Portada en móvil */
   .hero{width:100%;padding:120px 20px 110px}
-  .hero-logo{width:min(440px,90vw);margin-bottom:26px}
-  .hero-badge{font-size:11px;max-width:300px;line-height:1.5;margin-bottom:26px}
-  .hero h1{font-size:clamp(21px,6vw,28px);margin-bottom:12px}
+  .hero-logo{width:min(440px,90vw);margin-bottom:30px}
+  .hero-badge{font-size:11px;max-width:300px;line-height:1.5;margin-bottom:30px}
+  .hero h1{font-size:clamp(21px,6vw,28px);margin-bottom:16px}
   .hero .button-primary{min-width:0;width:100%;max-width:320px}
   .glow-one{width:230px;height:230px;left:-120px;top:78px;opacity:.8}
   .glow-two{width:210px;height:210px;right:-110px;top:42%;opacity:.8}
@@ -509,15 +518,15 @@ body.menu-open .wa-float{pointer-events:none}
   .glow-four{width:140px;height:140px;left:-50px;bottom:-50px}
   .scroll-cue{bottom:20px}
 
-  .section-heading{margin-bottom:22px}
+  .section-heading{margin-bottom:28px}
   .section-heading h2{font-size:clamp(35px,9.6vw,52px)}
   .bento{grid-template-columns:1fr;gap:12px}
   .about-who,.about-mission,.about-photo,.about-origin{grid-column:1;min-height:0;padding:26px}
   .about-photo{padding:0;min-height:210px}
   .about-who h3{font-size:32px}
-  .about-mission{padding-bottom:70px}
   .about-origin p,.about-who p,.about-mission p{font-size:14px}
-  .mission-list li{font-size:15px}
+  .mission-list li{font-size:15px;grid-template-columns:50px 1fr;gap:14px}
+  .mission-icon{width:50px;height:50px}
   .tile{border-radius:24px}
 
   /* Inicio en móvil */
@@ -534,28 +543,32 @@ body.menu-open .wa-float{pointer-events:none}
   .inicio-pillars strong{font-size:18px}
   .inicio-pillars li>span:not(.pillar-icon){font-size:13.5px}
 
-  .section-intro{font-size:15px;margin-top:0}
+  .section-intro{font-size:15px;margin:0 0 28px}
   .team-grid{grid-template-columns:1fr;gap:14px;max-width:440px;margin:0 auto}
   .team-card{border-radius:24px;padding:12px}
   .portrait{aspect-ratio:1/1;border-radius:20px}
   .team-info{padding:16px 8px 4px}
   .team-name{font-size:19px}
-  .papal-quote{grid-template-columns:1fr;padding:26px 22px 24px;border-radius:24px;gap:0}
-  .quote-mark{font-size:64px;line-height:.75;height:34px;margin-bottom:8px}
-  .papal-quote p{font-size:22px;line-height:1.3}
-  .papal-quote cite{grid-column:1;margin-top:14px}
+  .papal-quote{padding:28px 22px 26px;border-radius:24px;margin-top:calc(var(--gap) + 8px)}
+  .papal-quote p{font-size:22px;line-height:1.35}
+  .papal-quote cite{margin-top:16px}
   .route-side .section-heading h2{font-size:clamp(35px,9.6vw,52px)}
   .route-card{--base:84px;--step:10px;grid-template-columns:70px 1fr;gap:14px;padding:20px;min-height:0;border-radius:24px}
-  .route-badge{border-radius:18px;padding:10px 4px 6px}
+  .route-badge{grid-column:1;grid-row:1;border-radius:18px;padding:10px 4px 6px}
   .route-badge b{font-size:40px}
   .route-badge small{font-size:10.5px}
+  .route-card>div{grid-column:2;grid-row:1 / span 2}
   .route-card h3{font-size:20px}
   .route-card p{font-size:13.5px}
-  .route-icon{display:none}
-  .subsection-heading{margin:52px 0 18px}
+  /* En móvil el ícono queda debajo del número del paso */
+  .route-icon{grid-column:1;grid-row:2;justify-self:center;width:54px;height:54px}
+  .route-icon img{padding:6px}
+  .subsection-heading{margin:60px 0 22px}
+  .subsection-heading.first{margin-top:0}
+  .subsection-heading h3{margin-bottom:12px}
   .subsection-heading p{font-size:15px}
-  .definition{grid-template-columns:1fr;gap:16px;padding:26px;border-radius:24px}
-  .definition-icon{width:68px}
+  .definition{grid-template-columns:1fr;gap:20px;padding:26px;border-radius:24px}
+  .definition-icon{width:96px;height:96px}
   .definition p{font-size:15px}
   .concept-panel{min-height:300px;padding:26px;border-radius:24px}
   .concept-panel h3{font-size:28px}
@@ -605,6 +618,7 @@ body.menu-open .wa-float{pointer-events:none}
   .inicio-tile h3{font-size:34px}
   .route-card{padding:16px;grid-template-columns:58px 1fr}
   .route-badge b{font-size:34px}
+  .route-icon{width:46px;height:46px}
   .contact-card{padding:25px 18px}
 }
 
