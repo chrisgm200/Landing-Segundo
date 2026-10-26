@@ -115,7 +115,7 @@ function updateScroll() {
   if (progressBar) progressBar.style.transform = 'scaleX(' + (docH > 0 ? clamp(y / docH, 0, 1) : 0) + ')';
 
   if (routeCards.length) {
-    const lastIndex = routeCards.length - 1;
+    const total = routeCards.length;
 
     // Las tarjetas se apilan: la anterior se encoge un poco cuando la siguiente la cubre.
     routeCards.forEach((card, i) => {
@@ -134,14 +134,17 @@ function updateScroll() {
       if (reached) current = i + 1;
     });
 
-    // Barra de progreso: llega al 100 % justo cuando aparece el paso 5
-    const rect = routeList.getBoundingClientRect();
-    const last = routeCards[lastIndex];
-    const padBottom = parseFloat(getComputedStyle(routeList).paddingBottom) || 0;
-    const naturalLast = rect.height - last.offsetHeight - padBottom;
-    const span = naturalLast - (stickyTops[lastIndex] - stickyTops[0]);
-    const progress = span > 0 ? clamp((stickyTops[0] - rect.top) / span, 0, 1) : 0;
-    if (routeBarFill) routeBarFill.style.transform = 'scaleX(' + progress.toFixed(3) + ')';
+    // Barra de progreso: se completa (100 %) en el mismo instante en que se llega al paso 5.
+    // Avanza de forma continua mientras la siguiente tarjeta se acerca a la actual.
+    let progress = 1;
+    if (current < total) {
+      const cur = routeCards[current - 1];
+      const next = routeCards[current];
+      const dist = next.getBoundingClientRect().top - stickyTops[current] - 24;
+      const frac = clamp(1 - dist / (cur.offsetHeight * 0.9), 0, 1);
+      progress = (current - 1 + frac) / (total - 1);
+    }
+    if (routeBarFill) routeBarFill.style.transform = 'scaleX(' + clamp(progress, 0, 1).toFixed(3) + ')';
     if (routeCountNow) routeCountNow.textContent = current;
   }
   ticking = false;
@@ -155,50 +158,75 @@ window.addEventListener('load', () => { measureRoute(); updateScroll(); });
 measureRoute();
 updateScroll();
 
-/* ---------- TIPOS DE ABUSO SEXUAL (pestañas + flechas) ---------- */
-const conceptData = [
-  ['Agresión y violación sexual', 'Actos que atentan contra la libertad sexual mediante violencia o intimidación. Se configura como violación al existir acceso carnal (vaginal, anal o bucal) o penetración de objetos o miembros corporales.'],
-  ['Abuso sexual directo', 'Actos contra la indemnidad o libertad sexual sin violencia física o intimidación, ni consentimiento válido, aprovechándose de una posición de autoridad o superioridad para coaccionar a la víctima.'],
-  ['Abuso sexual indirecto', 'Inducción a participar o presenciar conductas sexuales sin contacto físico directo. Incluye comunicaciones o propuestas por internet, teléfono u otra tecnología de la información, y la obtención o exhibición engañosa de material pornográfico.'],
-  ['Acoso sexual', 'Solicitud habitual o continuada de favores sexuales dentro de una relación pastoral o docente, creando un entorno intimidatorio, hostil o humillante.'],
-  ['Provocación sexual', 'Ejecución o imposición de actos de exhibición obscena (exhibicionismo) ante un menor o persona vulnerable.'],
-  ['Explotación sexual o corrupción', 'Inducir, promover, facilitar o lucrar con la prostitución u otra forma de explotación de un menor o persona en condición de vulnerabilidad.'],
-  ['Pornografía infantil', 'Captación, producción, tenencia, comercialización, difusión o exhibición por cualquier medio de material pornográfico que involucra a menores o personas en condición de vulnerabilidad.']
-];
-const conceptButtons = [...document.querySelectorAll('.concept-tab')];
+/* ---------- SEMÁFORO (luces que cambian el detalle) ---------- */
+const lightBtns = [...document.querySelectorAll('.tl-btn')];
+const lightPanels = [...document.querySelectorAll('.tl-panel')];
+
+function showLight(i, focus) {
+  lightBtns.forEach((btn, index) => {
+    const on = index === i;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-selected', String(on));
+    btn.tabIndex = on ? 0 : -1;
+    if (on && focus) btn.focus();
+  });
+  lightPanels.forEach((panel, index) => {
+    const on = index === i;
+    panel.hidden = !on;
+    if (on) {
+      panel.style.animation = 'none';
+      void panel.offsetWidth;
+      panel.style.animation = 'panel-in .4s both';
+    }
+  });
+}
+lightBtns.forEach((btn, i) => {
+  btn.addEventListener('click', () => showLight(i, false));
+  btn.addEventListener('keydown', e => {
+    const last = lightBtns.length - 1;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); showLight(i === last ? 0 : i + 1, true); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); showLight(i === 0 ? last : i - 1, true); }
+  });
+});
+
+/* ---------- TIPOS DE ABUSO SEXUAL (pestañas + flechas) ----------
+   Solo funciona si en el HTML existe el bloque .concept-panel; si no existe, se omite. */
 const conceptPanel = document.querySelector('.concept-panel');
-const conceptBody = conceptPanel.querySelector('.concept-body');
-const conceptDots = [...conceptPanel.querySelectorAll('.concept-dots i')];
-let conceptCurrent = 0;
+if (conceptPanel) {
+  const conceptData = [
+    ['Agresión y violación sexual', 'Actos que atentan contra la libertad sexual mediante violencia o intimidación. Se configura como violación al existir acceso carnal (vaginal, anal o bucal) o penetración de objetos o miembros corporales.'],
+    ['Abuso sexual directo', 'Actos contra la indemnidad o libertad sexual sin violencia física o intimidación, ni consentimiento válido, aprovechándose de una posición de autoridad o superioridad para coaccionar a la víctima.'],
+    ['Abuso sexual indirecto', 'Inducción a participar o presenciar conductas sexuales sin contacto físico directo. Incluye comunicaciones o propuestas por internet, teléfono u otra tecnología de la información, y la obtención o exhibición engañosa de material pornográfico.'],
+    ['Acoso sexual', 'Solicitud habitual o continuada de favores sexuales dentro de una relación pastoral o docente, creando un entorno intimidatorio, hostil o humillante.'],
+    ['Provocación sexual', 'Ejecución o imposición de actos de exhibición obscena (exhibicionismo) ante un menor o persona vulnerable.'],
+    ['Explotación sexual o corrupción', 'Inducir, promover, facilitar o lucrar con la prostitución u otra forma de explotación de un menor o persona en condición de vulnerabilidad.'],
+    ['Pornografía infantil', 'Captación, producción, tenencia, comercialización, difusión o exhibición por cualquier medio de material pornográfico que involucra a menores o personas en condición de vulnerabilidad.']
+  ];
+  const conceptButtons = [...document.querySelectorAll('.concept-tab')];
+  const conceptBody = conceptPanel.querySelector('.concept-body');
+  const conceptDots = [...conceptPanel.querySelectorAll('.concept-dots i')];
+  let conceptCurrent = 0;
 
-function showConcept(i) {
-  conceptCurrent = (i + conceptData.length) % conceptData.length;
-  const [title, description] = conceptData[conceptCurrent];
-  conceptButtons.forEach((button, index) => {
-    const on = index === conceptCurrent;
-    button.classList.toggle('active', on);
-    button.setAttribute('aria-selected', String(on));
-  });
-  conceptDots.forEach((dot, index) => dot.classList.toggle('on', index === conceptCurrent));
-  conceptPanel.dataset.tone = String(conceptCurrent);
-  conceptBody.style.animation = 'none';
-  void conceptBody.offsetWidth;
-  conceptBody.style.animation = 'panel-in .35s both';
-  conceptBody.querySelector('h3').textContent = title;
-  conceptBody.querySelector('.concept-text').textContent = description;
-}
-conceptButtons.forEach(button => button.addEventListener('click', () => showConcept(Number(button.dataset.concept))));
-conceptPanel.querySelector('.concept-prev').addEventListener('click', () => showConcept(conceptCurrent - 1));
-conceptPanel.querySelector('.concept-next').addEventListener('click', () => showConcept(conceptCurrent + 1));
-
-/* ---------- ACORDEONES (cada tarjeta se abre sola, sin mover las de al lado) ---------- */
-function bindDetails(selector, closedText, openText) {
-  document.querySelectorAll(selector).forEach(card => {
-    card.addEventListener('toggle', () => {
-      const label = card.querySelector('.t-label');
-      if (label) label.textContent = card.open ? openText : closedText;
+  function showConcept(i) {
+    conceptCurrent = (i + conceptData.length) % conceptData.length;
+    const [title, description] = conceptData[conceptCurrent];
+    conceptButtons.forEach((button, index) => {
+      const on = index === conceptCurrent;
+      button.classList.toggle('active', on);
+      button.setAttribute('aria-selected', String(on));
     });
-  });
+    conceptDots.forEach((dot, index) => dot.classList.toggle('on', index === conceptCurrent));
+    conceptPanel.dataset.tone = String(conceptCurrent);
+    conceptBody.style.animation = 'none';
+    void conceptBody.offsetWidth;
+    conceptBody.style.animation = 'panel-in .35s both';
+    conceptBody.querySelector('h3').textContent = title;
+    conceptBody.querySelector('.concept-text').textContent = description;
+  }
+  conceptButtons.forEach(button => button.addEventListener('click', () => showConcept(Number(button.dataset.concept))));
+  conceptPanel.querySelector('.concept-prev').addEventListener('click', () => showConcept(conceptCurrent - 1));
+  conceptPanel.querySelector('.concept-next').addEventListener('click', () => showConcept(conceptCurrent + 1));
 }
-bindDetails('.team-card', 'Ver reseña', 'Ver menos');
-bindDetails('.prevention-card', 'Ver consejo', 'Ver menos');
+
+/* Nota: los textos "Ver reseña / Ver menos" y "Ver consejo / Ver menos" ahora los cambia
+   el CSS (clases .t-closed y .t-open), así que ya no hace falta código aquí. */

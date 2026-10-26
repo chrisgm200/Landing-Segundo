@@ -104,7 +104,8 @@
       <!-- REEMPLAZAR href por el enlace al Drive de la Comisión -->
       <a class="button button-light" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">Más información aquí</a>
     </article>
-    <article class="tile tile-sun about-mission reveal">
+    <article class="tile tile-sun about-mission has-sticker reveal">
+      <img class="sticker sticker-dove" src="assets/DECO-PALOMA.png" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
       <span class="tile-label">¿Cuál es nuestra misión?</span>
       <p>En camino de conversión y con vocación de servicio pastoral, trabajamos por:</p>
       <ul class="mission-list">
@@ -123,7 +124,8 @@
       </ul>
     </article>
     <figure class="photo about-photo reveal"><img src="assets/conocenos.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
-    <article class="tile tile-cream about-origin reveal">
+    <article class="tile tile-cream about-origin has-sticker reveal">
+      <img class="sticker sticker-hands" src="assets/DECO-MANOS.png" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
       <span class="tile-label">Nuestro origen</span>
       <h3 class="decree">Decreto de Cancillería N.° 064/Arz/2021</h3>
       <p>La Comisión de Escucha y Protección fue creada mediante el Decreto de Cancillería N.° 064/Arz/2021 de la Arquidiócesis de Lima. Esta iniciativa responde a las directrices del Papa Francisco en la Carta Apostólica <em>Vos Estis Lux Mundi</em> (2019) y a las orientaciones de la Conferencia Episcopal Peruana (2020).</p>
@@ -142,7 +144,7 @@
         <span class="portrait"><span class="initials" aria-hidden="true">ÁP</span><img src="assets/angel-palacios.png" alt="Ángel Palacios" loading="lazy" onerror="this.remove()"></span>
         <span class="team-info">
           <span class="team-name">Ángel Palacios<small>[Cargo en la Comisión]</small></span>
-          <span class="team-toggle"><span class="t-label">Ver reseña</span><b aria-hidden="true">+</b></span>
+          <span class="team-toggle"><span class="t-label"><span class="t-closed">Ver reseña</span><span class="t-open">Ver menos</span></span><b aria-hidden="true">+</b></span>
         </span>
       </summary>
       <p>[Breve reseña profesional]</p>
@@ -152,7 +154,7 @@
         <span class="portrait"><span class="initials" aria-hidden="true">IV</span><img src="assets/igor-valverde.png" alt="Igor Valverde" loading="lazy" onerror="this.remove()"></span>
         <span class="team-info">
           <span class="team-name">Igor Valverde<small>[Cargo en la Comisión]</small></span>
-          <span class="team-toggle"><span class="t-label">Ver reseña</span><b aria-hidden="true">+</b></span>
+          <span class="team-toggle"><span class="t-label"><span class="t-closed">Ver reseña</span><span class="t-open">Ver menos</span></span><b aria-hidden="true">+</b></span>
         </span>
       </summary>
       <p>[Breve reseña profesional]</p>
@@ -162,7 +164,7 @@
         <span class="portrait"><span class="initials" aria-hidden="true">EE</span><img src="assets/elisa-vega.png" alt="Elisa Estela" loading="lazy" onerror="this.remove()"></span>
         <span class="team-info">
           <span class="team-name">Elisa Estela<small>[Cargo en la Comisión]</small></span>
-          <span class="team-toggle"><span class="t-label">Ver reseña</span><b aria-hidden="true">+</b></span>
+          <span class="team-toggle"><span class="t-label"><span class="t-closed">Ver reseña</span><span class="t-open">Ver menos</span></span><b aria-hidden="true">+</b></span>
         </span>
       </summary>
       <p>[Breve reseña profesional]</p>
@@ -215,10 +217,41 @@
   <div class="section-heading reveal"><h2>Información para prevenir</h2></div>
 
   <div class="subsection-heading first reveal"><h3>¿Qué es el abuso sexual?</h3></div>
-  <article class="definition tile-teal reveal">
-    <span class="definition-icon" aria-hidden="true"><img src="assets/ICONO_ABUSO.png" alt="" width="120" height="120" loading="lazy"></span>
-    <p>Es una forma de violencia sexual. Corresponde a todo acto de índole sexual contra un niño, una niña, adolescente o adulto vulnerable, puede ser con o sin contacto físico. Tampoco exige violencia física, pues suele cometerse mediante engaños, manipulación o abuso de poder. Es un delito sancionado por la ley estatal y canónica para proteger la dignidad y los derechos de las personas.</p>
-  </article>
+  <div class="abuse-grid">
+    <!-- Tarjeta principal -->
+    <article class="abuse-main reveal">
+      <span class="abuse-circle ac-1" aria-hidden="true"></span>
+      <span class="abuse-circle ac-2" aria-hidden="true"></span>
+      <span class="abuse-icon" aria-hidden="true"><img src="assets/ICONO_ABUSO.png" alt="" width="168" height="168" loading="lazy"></span>
+      <h3>Es una forma de <span>violencia sexual</span></h3>
+      <p class="abuse-tag">Servicio gratuito, seguro y confidencial</p>
+      <a class="button button-yellow" href="#contacto">Habla con nosotros</a>
+    </article>
+
+    <!-- Cuatro ideas clave -->
+    <div class="fact-grid">
+      <article class="fact fact-mint reveal">
+        <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.4"/><path d="M16.5 14c2.6.2 4.5 2 4.5 4.6"/></svg></span>
+        <h4>A quién afecta</h4>
+        <p>Todo acto de índole sexual contra un niño, una niña, adolescente o adulto vulnerable.</p>
+      </article>
+      <article class="fact fact-blue reveal">
+        <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M11 10V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M14 10V6.5a1.5 1.5 0 0 1 3 0v6c0 4-2.5 7-6 7-2.6 0-4-1.4-5.2-3.4L4 13.6a1.4 1.4 0 0 1 2.4-1.4L8 14"/></svg></span>
+        <h4>Con o sin contacto</h4>
+        <p>Puede ser con o sin contacto físico.</p>
+      </article>
+      <article class="fact fact-cream reveal">
+        <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v11H10l-5 4v-4H4z"/><path d="M8.5 10h7M8.5 13h4"/></svg></span>
+        <h4>Sin violencia física</h4>
+        <p>Tampoco la exige: suele cometerse mediante engaños, manipulación o abuso de poder.</p>
+      </article>
+      <article class="fact fact-white reveal">
+        <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 20h10M5 7h14"/><path d="M5 7l-3 7a3.5 3.5 0 0 0 6 0L5 7zM19 7l-3 7a3.5 3.5 0 0 0 6 0l-3-7z"/></svg></span>
+        <h4>Es un delito</h4>
+        <p>Sancionado por la ley estatal y canónica para proteger la dignidad y los derechos de las personas.</p>
+      </article>
+    </div>
+  </div>
 
   <div class="subsection-heading reveal"><h3>¿Cómo podemos prevenir el abuso sexual?</h3><p>La prevención es un compromiso de toda la comunidad eclesial. Construir entornos seguros requiere acciones sencillas pero fundamentales en nuestro día a día:</p></div>
   <div class="prevention-grid">
@@ -227,7 +260,7 @@
         <figure class="photo prevention-photo"><img src="assets/prevencion-a.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
         <span class="letter">A</span><h4>Enseña y fomenta el autocuidado</h4>
         <p>Ayuda a que niños, niñas y adolescentes aprendan a protegerse y a reconocer cuando algo no está bien.</p>
-        <span class="advice-toggle"><span class="t-label">Ver consejo</span><b aria-hidden="true">＋</b></span>
+        <span class="advice-toggle"><span class="t-label"><span class="t-closed">Ver consejo</span><span class="t-open">Ver menos</span></span><b aria-hidden="true">＋</b></span>
       </summary>
       <div class="advice">
         <p><strong>Aprender a decir "no":</strong> Enséñales que son dueños de su cuerpo y que tienen derecho a poner límites si algo les hace sentir incómodos o vulnerables.</p>
@@ -237,10 +270,11 @@
     </details>
     <details class="prevention-card tile-blue reveal">
       <summary>
+        <img class="sticker sticker-hug" src="assets/DECO-ABRAZO.png" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
         <figure class="photo prevention-photo"><img src="assets/prevencion-b.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
         <span class="letter">B</span><h4>Escucha con atención y crea espacios de confianza</h4>
         <p>La mejor protección es asegurar que nadie se sienta aislado o con temor a hablar.</p>
-        <span class="advice-toggle"><span class="t-label">Ver consejo</span><b aria-hidden="true">＋</b></span>
+        <span class="advice-toggle"><span class="t-label"><span class="t-closed">Ver consejo</span><span class="t-open">Ver menos</span></span><b aria-hidden="true">＋</b></span>
       </summary>
       <div class="advice">
         <p><strong>Escuchar sin juzgar:</strong> Crea un ambiente familiar y comunitario de comunicación abierta donde las personas sientan seguridad emocional para expresar lo que les preocupa.</p>
@@ -253,7 +287,7 @@
         <figure class="photo prevention-photo"><img src="assets/prevencion-c.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
         <span class="letter">C</span><h4>Exige entornos seguros e instituciones transparentes</h4>
         <p>Para prevenir, también debemos transformar la forma en que nos organizamos y cuidamos en la comunidad.</p>
-        <span class="advice-toggle"><span class="t-label">Ver consejo</span><b aria-hidden="true">＋</b></span>
+        <span class="advice-toggle"><span class="t-label"><span class="t-closed">Ver consejo</span><span class="t-open">Ver menos</span></span><b aria-hidden="true">＋</b></span>
       </summary>
       <div class="advice">
         <p><strong>Cero tolerancia a la violencia:</strong> Rompe la normalización de conductas abusivas y promueve un trato basado en el respeto y la igualdad.</p>
@@ -263,52 +297,60 @@
     </details>
   </div>
 
-  <div class="subsection-heading reveal"><h3>Semáforo para prevenir el abuso sexual contra niños, niñas y adolescentes en el ámbito eclesial</h3><p>¿Reconoces algunas conductas o acciones?</p><p class="hint">Toca cada semáforo para ver el detalle.</p></div>
-  <div class="semaforo">
-    <details class="light light-green reveal">
-      <summary>
-        <span class="bulb" aria-hidden="true"></span>
-        <h4>SEGURIDAD<small>(En protección)</small></h4>
-        <span class="light-toggle"><span><span class="lt-closed">Ver 5 conductas</span><span class="lt-open">Ocultar conductas</span></span><b aria-hidden="true">+</b></span>
-      </summary>
-      <ul>
-        <li>Las actividades se realizan en ambientes abiertos o visibles para otros (puertas de vidrio).</li>
-        <li>Las actividades que se realizan con menores cuentan con la presencia autorizada de más de un adulto.</li>
-        <li>Los padres están informados y autorizan las actividades en los que participan sus hijos e hijas.</li>
-        <li>La comunicación digital es segura, a través de canales grupales autorizados y supervisados.</li>
-        <li>La comunidad parroquial o educativa implementa medidas de cuidado y protección para reducir los riesgos de abuso sexual.</li>
-      </ul>
-    </details>
-    <details class="light light-yellow reveal">
-      <summary>
-        <span class="bulb" aria-hidden="true"></span>
-        <h4>ALERTA<small>(En riesgo)</small></h4>
-        <span class="light-toggle"><span><span class="lt-closed">Ver 5 conductas</span><span class="lt-open">Ocultar conductas</span></span><b aria-hidden="true">+</b></span>
-      </summary>
-      <ul>
-        <li>Estar a solas en espacios cerrados o transportar a menores sin conocimiento y autorización de padres o tutores.</li>
-        <li>Dar regalos, favores, invitaciones o trato exclusivo a un menor sin conocimiento y autorización de padres o tutores.</li>
-        <li>Pedir a un menor que guarde secretos de algún hecho.</li>
-        <li>Comunicación incómoda o inapropiada por redes o chat privado.</li>
-        <li>Un adulto realiza juegos de contacto físico incómodo con un menor: cosquillas, palmadas, pellizcos, etc.</li>
-      </ul>
-    </details>
-    <details class="light light-red reveal">
-      <summary>
-        <span class="bulb" aria-hidden="true"></span>
-        <h4>DENUNCIA<small>(En abuso)</small></h4>
-        <span class="light-toggle"><span><span class="lt-closed">Ver 6 conductas</span><span class="lt-open">Ocultar conductas</span></span><b aria-hidden="true">+</b></span>
-      </summary>
-      <ul>
-        <li>Tocamiento o actos de connotación sexual (besos, caricias o contacto en zonas íntimas).</li>
-        <li>Conversaciones de contenido sexual o propuestas con fines sexuales.</li>
-        <li>Pedir o exigir fotografías o videos íntimos.</li>
-        <li>Exhibiciones obscenas (te muestran partes íntimas del cuerpo).</li>
-        <li>Mostrar o compartir material pornográfico.</li>
-        <li>Haber sufrido violación sexual.</li>
-      </ul>
-      <a class="light-link" href="#contacto">Habla con nosotros</a>
-    </details>
+  <div class="subsection-heading reveal"><h3>Semáforo para prevenir el abuso sexual contra niños, niñas y adolescentes en el ámbito eclesial</h3><p>¿Reconoces algunas conductas o acciones?</p><p class="hint">Toca cada luz del semáforo para ver las conductas.</p></div>
+  <div class="tl-board reveal">
+    <div class="tl-side">
+      <div class="tl-nav" role="tablist" aria-label="Semáforo de conductas">
+        <button class="tl-btn tl-green active" type="button" role="tab" id="tl-tab-0" aria-selected="true" aria-controls="tl-panel-0">
+          <span class="tl-light" aria-hidden="true"></span>
+          <span class="tl-label"><strong>SEGURIDAD</strong><small>En protección</small><em>5 conductas</em></span>
+        </button>
+        <button class="tl-btn tl-yellow" type="button" role="tab" id="tl-tab-1" aria-selected="false" tabindex="-1" aria-controls="tl-panel-1">
+          <span class="tl-light" aria-hidden="true"></span>
+          <span class="tl-label"><strong>ALERTA</strong><small>En riesgo</small><em>5 conductas</em></span>
+        </button>
+        <button class="tl-btn tl-red" type="button" role="tab" id="tl-tab-2" aria-selected="false" tabindex="-1" aria-controls="tl-panel-2">
+          <span class="tl-light" aria-hidden="true"></span>
+          <span class="tl-label"><strong>DENUNCIA</strong><small>En abuso</small><em>6 conductas</em></span>
+        </button>
+      </div>
+      <div class="tl-pole" aria-hidden="true"></div>
+    </div>
+
+    <div class="tl-panels">
+      <div class="tl-panel tl-green" role="tabpanel" id="tl-panel-0" aria-labelledby="tl-tab-0">
+        <div class="tl-panel-head"><span class="tl-bulb" aria-hidden="true"></span><h4>SEGURIDAD<small>(En protección)</small></h4></div>
+        <ul>
+          <li>Las actividades se realizan en ambientes abiertos o visibles para otros (puertas de vidrio).</li>
+          <li>Las actividades que se realizan con menores cuentan con la presencia autorizada de más de un adulto.</li>
+          <li>Los padres están informados y autorizan las actividades en los que participan sus hijos e hijas.</li>
+          <li>La comunicación digital es segura, a través de canales grupales autorizados y supervisados.</li>
+          <li>La comunidad parroquial o educativa implementa medidas de cuidado y protección para reducir los riesgos de abuso sexual.</li>
+        </ul>
+      </div>
+      <div class="tl-panel tl-yellow" role="tabpanel" id="tl-panel-1" aria-labelledby="tl-tab-1" hidden>
+        <div class="tl-panel-head"><span class="tl-bulb" aria-hidden="true"></span><h4>ALERTA<small>(En riesgo)</small></h4></div>
+        <ul>
+          <li>Estar a solas en espacios cerrados o transportar a menores sin conocimiento y autorización de padres o tutores.</li>
+          <li>Dar regalos, favores, invitaciones o trato exclusivo a un menor sin conocimiento y autorización de padres o tutores.</li>
+          <li>Pedir a un menor que guarde secretos de algún hecho.</li>
+          <li>Comunicación incómoda o inapropiada por redes o chat privado.</li>
+          <li>Un adulto realiza juegos de contacto físico incómodo con un menor: cosquillas, palmadas, pellizcos, etc.</li>
+        </ul>
+      </div>
+      <div class="tl-panel tl-red" role="tabpanel" id="tl-panel-2" aria-labelledby="tl-tab-2" hidden>
+        <div class="tl-panel-head"><span class="tl-bulb" aria-hidden="true"></span><h4>DENUNCIA<small>(En abuso)</small></h4></div>
+        <ul>
+          <li>Tocamiento o actos de connotación sexual (besos, caricias o contacto en zonas íntimas).</li>
+          <li>Conversaciones de contenido sexual o propuestas con fines sexuales.</li>
+          <li>Pedir o exigir fotografías o videos íntimos.</li>
+          <li>Exhibiciones obscenas (te muestran partes íntimas del cuerpo).</li>
+          <li>Mostrar o compartir material pornográfico.</li>
+          <li>Haber sufrido violación sexual.</li>
+        </ul>
+        <a class="tl-link" href="#contacto">Habla con nosotros</a>
+      </div>
+    </div>
   </div>
 </section>
 

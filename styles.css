@@ -22,15 +22,19 @@ button{font:inherit}
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:300;background:linear-gradient(90deg,var(--green2),var(--teal2),var(--yellow));transform:scaleX(0);transform-origin:left;will-change:transform;pointer-events:none}
 
 /* ============ HEADER / NAV ============ */
-.site-header{position:fixed;top:18px;left:0;width:100%;z-index:200;padding:0 20px;pointer-events:none}
+.site-header{position:fixed;top:0;left:0;width:100%;z-index:200;padding:0;pointer-events:none}
 .nav-backdrop{position:fixed;inset:0;background:rgba(14,40,42,.38);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s .35s}
 .site-header.open .nav-backdrop{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
-.nav-pill{position:relative;z-index:2;pointer-events:auto;max-width:1120px;margin:auto;padding:10px 14px 10px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(255,255,255,.88);border:1px solid rgba(0,125,124,.1);border-radius:100px;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);transition:box-shadow .3s,padding .3s}
-.nav-pill.scrolled{box-shadow:0 10px 35px #163e4217;padding-top:7px;padding-bottom:7px}
+/* Barra de ancho completo: arriba del todo es transparente (se acopla al fondo) */
+.nav-pill{position:relative;z-index:2;pointer-events:auto;width:100%;margin:0;padding:16px max(24px,calc((100% - var(--max))/2));display:flex;align-items:center;justify-content:space-between;gap:18px;background:transparent;border:0;border-bottom:1px solid transparent;border-radius:0;transition:background .35s ease,box-shadow .35s ease,padding .35s ease,border-color .35s ease}
+/* Al bajar: la barra se vuelve blanca con sombra suave */
+.nav-pill.scrolled{background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom-color:rgba(0,125,124,.08);box-shadow:0 10px 32px rgba(22,62,66,.10);padding-top:9px;padding-bottom:9px}
+.nav-pill.scrolled .brand img{height:46px}
+.site-header.open .nav-pill{background:#fff;box-shadow:0 10px 32px rgba(22,62,66,.10)}
 .brand{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
-.brand img{height:54px;width:auto;max-width:300px;object-fit:contain}
+.brand img{height:54px;width:auto;max-width:300px;object-fit:contain;transition:height .35s ease}
 .nav-links{position:relative;display:flex;align-items:center;gap:3px}
-.nav-links a{position:relative;z-index:1;text-decoration:none;font-size:12.5px;font-weight:600;color:#33484d;padding:11px 14px;border-radius:100px;white-space:nowrap;transition:background .2s,color .3s}
+.nav-links a{position:relative;z-index:1;text-decoration:none;font-size:13.5px;font-weight:600;color:#33484d;padding:11px 16px;border-radius:100px;white-space:nowrap;transition:background .2s,color .3s}
 .nav-links a em{font-style:normal}
 .nav-links a b,.nav-note{display:none}
 /* Indicador que se traslada de una sección a otra (escritorio) */
@@ -78,6 +82,8 @@ button{font:inherit}
 .button-primary:active{transform:translateY(-1px) scale(.98)}
 .button-light{background:#fff;color:var(--teal-dark);margin-top:10px}
 .button-light:hover,.button-light:focus-visible{background:var(--yellow);color:var(--ink)}
+.button-yellow{background:var(--yellow);color:var(--teal-dark);box-shadow:0 12px 26px rgba(0,0,0,.18)}
+.button-yellow:hover,.button-yellow:focus-visible{background:#fff;color:var(--teal-dark)}
 /* Indicador de scroll: flechita hacia abajo con movimiento */
 .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(0,125,124,.4);background:rgba(255,255,255,.92);color:var(--teal);text-decoration:none;z-index:2;box-shadow:0 8px 20px rgba(20,60,62,.12);animation:bounce-cue 1.8s ease-in-out infinite;transition:background .25s,color .25s}
 .scroll-cue:hover,.scroll-cue:focus-visible{background:var(--teal);color:#fff}
@@ -103,6 +109,10 @@ button{font:inherit}
 .q{color:var(--yellow);font-weight:800;font-size:1em;line-height:1;font-style:normal}
 .q-open{margin-right:.14em}
 .q-close{margin-left:.14em}
+
+/* ============ TEXTO "Ver más / Ver menos" (lo cambia el CSS según esté abierto o cerrado) ============ */
+details:not([open]) .t-open,
+details[open] .t-closed{display:none}
 
 /* ============ INICIO (ampliado) ============ */
 .inicio-tile{
@@ -157,6 +167,13 @@ button{font:inherit}
 .decree{font-size:clamp(22px,2.6vw,32px);letter-spacing:-.04em;line-height:1.2;color:var(--blue-text);margin:0 0 16px}
 .section-intro{max-width:780px;color:var(--muted);font-size:17px;margin:0 0 36px}
 
+/* ============ CALCOMANÍAS (íconos decorativos en las tarjetas) ============ */
+.sticker{position:absolute;z-index:0;max-width:none;height:auto;pointer-events:none;user-select:none;mix-blend-mode:multiply;opacity:.4}
+.sticker-dove{width:200px;right:-34px;bottom:-30px;transform:rotate(-10deg);opacity:.55}
+.sticker-hands{width:210px;right:-30px;bottom:-58px;transform:rotate(6deg)}
+.sticker-hug{width:170px;right:-28px;bottom:-34px;transform:rotate(-8deg)}
+.has-sticker>*:not(.sticker){position:relative;z-index:1}
+
 /* Equipo */
 .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);align-items:start}
 .team-card{background:#fff;border-radius:var(--radius);padding:14px;min-width:0;box-shadow:0 8px 24px rgba(20,60,62,.06)}
@@ -190,10 +207,10 @@ button{font:inherit}
 .route-intro{margin:0;max-width:420px;color:var(--muted)}
 .route-progress{margin-top:32px;max-width:420px}
 .route-bar{height:6px;border-radius:99px;background:rgba(0,125,124,.14);overflow:hidden}
-.route-bar i{display:block;height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,var(--green2),var(--teal2),var(--yellow));transform:scaleX(0);transform-origin:left;transition:transform .15s linear}
+.route-bar i{display:block;height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,var(--green2),var(--teal2),var(--yellow));transform:scaleX(0);transform-origin:left;transition:transform .12s linear}
 .route-count{display:block;margin-top:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
 .route-count b{display:inline-block;min-width:1ch;font-weight:800}
-/* padding inferior: la barra llega al 100% en el paso 5 y se mantiene un momento antes de salir */
+/* padding inferior: la barra ya está al 100% en el paso 5 y se mantiene un momento antes de salir */
 .route-list{display:grid;gap:14px;position:relative;min-width:0;padding-bottom:150px}
 .route-card{--base:115px;--step:15px;--i:0;--s:1;
   border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:92px 1fr 80px;gap:22px;align-items:start;min-height:205px;
@@ -217,11 +234,31 @@ button{font:inherit}
 .subsection-heading h3{font-size:clamp(26px,3.4vw,42px);letter-spacing:-.05em;line-height:1.15;margin:0 0 16px;max-width:980px}
 .subsection-heading p{margin:0;color:var(--muted);font-size:17px;max-width:780px}
 .subsection-heading p+p{margin-top:8px}
-.definition{padding:clamp(28px,4.5vw,56px);display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,3.5vw,44px);align-items:center;border-radius:var(--radius)}
-/* Ícono de definición: círculo blanco con el PNG */
-.definition-icon{display:block;width:clamp(96px,11vw,140px);height:clamp(96px,11vw,140px);border-radius:50%;background:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18)}
-.definition-icon img{width:100%;height:100%;object-fit:contain;padding:6px}
-.definition p{font-size:clamp(16px,1.7vw,20px);line-height:1.75;margin:0}
+
+/* ============ ¿QUÉ ES EL ABUSO SEXUAL? (tarjeta principal + 4 ideas) ============ */
+.abuse-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--gap);align-items:stretch}
+.abuse-main{position:relative;overflow:hidden;isolation:isolate;border-radius:var(--radius);padding:clamp(30px,4vw,52px);min-height:480px;
+  background:linear-gradient(135deg,#008785 0%,#00585d 100%);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.abuse-circle{position:absolute;border-radius:50%;z-index:-1;pointer-events:none}
+.ac-1{width:230px;height:230px;background:var(--green2);opacity:.35;right:-70px;top:-70px}
+.ac-2{width:160px;height:160px;background:var(--yellow);opacity:.4;left:-60px;bottom:-60px}
+.abuse-icon{width:clamp(130px,14vw,168px);height:clamp(130px,14vw,168px);border-radius:50%;background:#fff;overflow:hidden;box-shadow:0 0 0 12px rgba(255,255,255,.14),0 16px 34px rgba(0,0,0,.18);margin-bottom:34px;flex-shrink:0}
+.abuse-icon img{width:100%;height:100%;object-fit:contain;padding:6px}
+.abuse-main h3{font-size:clamp(30px,3.6vw,46px);line-height:1.1;letter-spacing:-.05em;margin:0 0 28px;max-width:420px}
+.abuse-main h3 span{display:block;color:var(--yellow)}
+.abuse-tag{width:100%;margin:0 0 22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.24);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+.fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
+.fact{border-radius:var(--radius);padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:translate .25s ease}
+.fact-mint{background:var(--mint)}
+.fact-blue{background:var(--blue)}
+.fact-cream{background:var(--cream)}
+.fact-white{background:#fff;box-shadow:0 8px 24px rgba(20,60,62,.06)}
+.fact-icon{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.85);color:var(--teal);display:grid;place-items:center;flex-shrink:0}
+.fact-white .fact-icon{background:var(--mint)}
+.fact-icon svg{width:24px;height:24px}
+.fact h4{margin:0;font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--teal)}
+.fact p{margin:0;font-size:15px;line-height:1.7;color:#2c4046}
 
 /* Tipos (pestañas) */
 .concepts-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--gap);align-items:stretch}
@@ -254,7 +291,9 @@ button{font:inherit}
 
 /* Prevención */
 .prevention-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);align-items:start}
-.prevention-card{border-radius:var(--radius);padding:18px 18px 26px;min-width:0}
+.prevention-card{position:relative;overflow:hidden;border-radius:var(--radius);padding:18px 18px 26px;min-width:0}
+.prevention-card summary>*:not(.sticker){position:relative;z-index:1}
+.prevention-card summary>.sticker{position:absolute;margin:0}
 .prevention-card summary{cursor:pointer;list-style:none;display:block}
 .prevention-photo{aspect-ratio:16/10;border-radius:22px;margin-bottom:22px}
 .prevention-card summary>*:not(.prevention-photo){margin-left:10px;margin-right:10px}
@@ -270,38 +309,48 @@ button{font:inherit}
 .prevention-card[open] .advice p:nth-child(2){animation-delay:.1s}
 .prevention-card[open] .advice p:nth-child(3){animation-delay:.2s}
 
-/* Semáforo (desplegable) */
-.semaforo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);align-items:start}
-.light{--c:var(--green);--c-bg:#E9F3D6;border-radius:var(--radius);background:var(--c-bg);position:relative;overflow:hidden;border-top:8px solid var(--c);transition:box-shadow .35s ease,translate .25s ease}
-.light-yellow{--c:#E9B800;--c-bg:#FBF1C2}
-.light-red{--c:var(--red);--c-bg:#F8DEDA}
-.light[open]{box-shadow:0 18px 42px color-mix(in srgb,var(--c) 30%,transparent)}
-.light summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:16px;padding:26px 28px 22px;-webkit-tap-highlight-color:transparent}
-.light summary::-webkit-details-marker{display:none}
-.light summary:focus-visible{outline:3px solid var(--c);outline-offset:-8px;border-radius:var(--radius)}
-.bulb{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:var(--c);box-shadow:0 0 0 7px color-mix(in srgb,var(--c) 22%,transparent);animation:bulb 2.8s ease-in-out infinite}
-.light-yellow .bulb{animation-delay:.9s}
-.light-red .bulb{animation-delay:1.8s}
-.light h4{margin:0;font-size:22px;letter-spacing:.04em;font-weight:800;color:var(--ink);line-height:1.1}
-.light small{display:block;margin-top:4px;font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
-.light-toggle{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--c) 38%,transparent);font-size:13px;font-weight:800;color:var(--ink)}
-.light-toggle b{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-size:21px;line-height:1;font-weight:600;transition:transform .3s var(--ease)}
-.light-yellow .light-toggle b{color:var(--ink)}
-.light[open] .light-toggle b{transform:rotate(45deg)}
-.light:not([open]) .lt-open,.light[open] .lt-closed{display:none}
-.light ul{list-style:none;margin:0;padding:4px 28px 26px;display:grid;gap:12px}
-.light li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.6;color:#2c4046}
-.light li:before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--c)}
-.light[open] li{animation:panel-in .4s both}
-.light[open] li:nth-child(2){animation-delay:.06s}
-.light[open] li:nth-child(3){animation-delay:.12s}
-.light[open] li:nth-child(4){animation-delay:.18s}
-.light[open] li:nth-child(5){animation-delay:.24s}
-.light[open] li:nth-child(6){animation-delay:.30s}
-.light-link{display:inline-flex;margin:0 28px 28px;padding:11px 20px;border-radius:100px;background:var(--red);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:background .25s,transform .2s}
-.light[open] .light-link{animation:panel-in .4s .36s both}
-.light-link:hover,.light-link:focus-visible{background:#9f332b;transform:translateY(-2px)}
+/* ============ SEMÁFORO INTERACTIVO ============ */
 .hint{margin-top:10px!important;font-size:14px!important;font-weight:600;color:var(--teal)!important}
+.tl-green{--c:var(--green);--c-bg:#E9F3D6;--c-text:#4d6f0c}
+.tl-yellow{--c:#E9B800;--c-bg:#FBF1C2;--c-text:#8a6700}
+.tl-red{--c:var(--red);--c-bg:#F8DEDA;--c-text:#a4332a}
+.tl-board{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:clamp(18px,3vw,40px);align-items:start}
+.tl-side{min-width:0}
+/* Caja oscura del semáforo (escritorio: las luces van a la izquierda, junto a su nombre) */
+.tl-nav{position:relative;display:grid;padding:16px 0}
+.tl-nav:before{content:"";position:absolute;left:0;top:0;bottom:0;width:116px;border-radius:46px;background:#1f3338}
+.tl-btn{position:relative;z-index:1;display:grid;grid-template-columns:116px 1fr;align-items:center;min-height:128px;padding:0;border:0;background:none;text-align:left;cursor:pointer;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.tl-btn:focus-visible{outline:3px solid var(--c);outline-offset:2px;border-radius:30px}
+.tl-light{width:84px;height:84px;border-radius:50%;justify-self:center;background:color-mix(in srgb,var(--c) 24%,#1f3338);transition:background .35s,box-shadow .35s,transform .35s}
+.tl-btn:hover .tl-light{background:color-mix(in srgb,var(--c) 45%,#1f3338)}
+.tl-btn.active .tl-light{background:var(--c);transform:scale(1.04);box-shadow:0 0 0 8px color-mix(in srgb,var(--c) 30%,transparent),0 0 34px color-mix(in srgb,var(--c) 70%,transparent)}
+.tl-label{justify-self:start;padding:12px 18px;margin-left:6px;border-radius:18px;transition:background .3s}
+.tl-btn.active .tl-label{background:var(--c-bg)}
+.tl-label strong{display:block;font-size:20px;font-weight:800;letter-spacing:.03em;line-height:1.1;color:var(--c-text)}
+.tl-label small{display:block;margin-top:4px;font-size:14px;font-weight:600;color:var(--muted)}
+.tl-label em{display:block;margin-top:5px;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-text);opacity:.85}
+/* Poste y base */
+.tl-pole{position:relative;width:26px;height:44px;margin:0 0 22px 45px;background:#1f3338}
+.tl-pole:after{content:"";position:absolute;left:-35px;bottom:-14px;width:96px;height:14px;border-radius:10px;background:#1f3338}
+/* Panel con el detalle de la luz elegida */
+.tl-panels{min-width:0}
+.tl-panel{border-radius:var(--radius);background:var(--c-bg);border-top:8px solid var(--c);padding:clamp(26px,3.6vw,46px)}
+.tl-panel[hidden]{display:none}
+.tl-panel-head{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+.tl-bulb{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:var(--c);box-shadow:0 0 0 7px color-mix(in srgb,var(--c) 22%,transparent);animation:bulb 2.8s ease-in-out infinite}
+.tl-panel h4{margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:.03em;line-height:1.1;color:var(--ink)}
+.tl-panel h4 small{display:block;margin-top:5px;font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
+.tl-panel ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.tl-panel li{position:relative;padding-left:24px;font-size:15.5px;line-height:1.65;color:#2c4046}
+.tl-panel li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tl-panel li{animation:panel-in .4s both}
+.tl-panel li:nth-child(2){animation-delay:.06s}
+.tl-panel li:nth-child(3){animation-delay:.12s}
+.tl-panel li:nth-child(4){animation-delay:.18s}
+.tl-panel li:nth-child(5){animation-delay:.24s}
+.tl-panel li:nth-child(6){animation-delay:.30s}
+.tl-link{display:inline-flex;margin-top:28px;padding:12px 22px;border-radius:100px;background:var(--red);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:background .25s,transform .2s}
+.tl-link:hover,.tl-link:focus-visible{background:#9f332b;transform:translateY(-2px)}
 
 /* Contacto */
 .contact-section{padding-top:65px;padding-bottom:90px}
@@ -409,7 +458,7 @@ body.menu-open .wa-float{pointer-events:none}
 }
 
 @media(hover:hover) and (pointer:fine){
-  .tile:hover,.prevention-card:hover,.light:hover{translate:0 -3px}
+  .tile:hover,.prevention-card:hover,.fact:hover{translate:0 -3px}
   .route-card:hover{translate:0 -2px}
   .inicio-pillars li:hover{background:rgba(255,255,255,.2);transform:translateX(6px)}
 }
@@ -448,20 +497,22 @@ body.menu-open .wa-float{pointer-events:none}
   .about-photo{grid-column:span 5}
   .about-origin{grid-column:span 7}
   .prevention-grid{grid-template-columns:1fr}
-  .semaforo{grid-template-columns:1fr}
+  .abuse-grid{grid-template-columns:1fr}
+  .abuse-main{min-height:0}
   .team-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
   .team-name{font-size:17px}
   .contact-card{grid-template-columns:1fr}
   .footer-logos img{height:68px}
 }
 
-/* ============ MENÚ HAMBURGUESA (tablet pequeña y móvil) ============ */
+/* ============ MENÚ HAMBURGUESA + SEMÁFORO HORIZONTAL (tablet pequeña y móvil) ============ */
 @media(max-width:860px){
   .menu-toggle{display:flex}
+  .nav-pill{padding-left:16px;padding-right:16px}
   .brand img{height:44px}
   .nav-indicator{display:none}
   .nav-links{
-    position:absolute;top:calc(100% + 12px);left:0;right:0;
+    position:absolute;top:calc(100% + 10px);left:14px;right:14px;
     display:flex;flex-direction:column;align-items:stretch;gap:8px;
     padding:14px;background:#fff;border-radius:30px;border:1px solid rgba(0,125,124,.1);
     box-shadow:0 30px 70px rgba(10,50,52,.28);
@@ -496,13 +547,26 @@ body.menu-open .wa-float{pointer-events:none}
   .concept-tabs{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 1px 10px;gap:8px;-webkit-overflow-scrolling:touch}
   .concept-tab{flex:0 0 auto;scroll-snap-align:start;min-height:46px;padding:10px 16px;white-space:nowrap}
   .concept-tab.active{transform:none}
+
+  /* Semáforo: las tres luces van en una barra horizontal y el detalle debajo */
+  .tl-board{grid-template-columns:1fr;gap:16px}
+  .tl-nav{grid-template-columns:repeat(3,minmax(0,1fr));padding:20px 8px 16px;background:#1f3338;border-radius:28px}
+  .tl-nav:before,.tl-pole{display:none}
+  .tl-btn{grid-template-columns:1fr;justify-items:center;text-align:center;min-height:0;gap:12px;padding:0 4px}
+  .tl-light{width:64px;height:64px}
+  .tl-btn.active .tl-light{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 30%,transparent),0 0 26px color-mix(in srgb,var(--c) 70%,transparent)}
+  .tl-label{background:none!important;padding:0!important;margin:0;justify-self:center;text-align:center}
+  .tl-label strong{color:#fff;font-size:12.5px;letter-spacing:.04em}
+  .tl-label small{color:#b9c9ca;font-size:11px;margin-top:2px}
+  .tl-label em{display:none}
 }
 
 /* ============ MÓVIL ============ */
 @media(max-width:700px){
   html{scroll-padding-top:85px}
-  .site-header{top:10px;padding:0 12px}
-  .nav-pill{padding:7px 9px 7px 13px;min-height:58px}
+  .site-header{top:0;padding:0}
+  .nav-pill{padding:9px 14px;min-height:62px}
+  .nav-pill.scrolled{padding-top:7px;padding-bottom:7px}
   .brand img{height:44px;max-width:62vw}
   .section{width:calc(100% - 28px);padding:78px 0 24px}
 
@@ -527,6 +591,9 @@ body.menu-open .wa-float{pointer-events:none}
   .about-origin p,.about-who p,.about-mission p{font-size:14px}
   .mission-list li{font-size:15px;grid-template-columns:50px 1fr;gap:14px}
   .mission-icon{width:50px;height:50px}
+  .sticker-dove{width:150px;right:-30px;bottom:-24px}
+  .sticker-hands{width:150px;right:-26px;bottom:-40px}
+  .sticker-hug{width:130px;right:-22px;bottom:-26px}
   .tile{border-radius:24px}
 
   /* Inicio en móvil */
@@ -567,9 +634,18 @@ body.menu-open .wa-float{pointer-events:none}
   .subsection-heading.first{margin-top:0}
   .subsection-heading h3{margin-bottom:12px}
   .subsection-heading p{font-size:15px}
-  .definition{grid-template-columns:1fr;gap:20px;padding:26px;border-radius:24px}
-  .definition-icon{width:96px;height:96px}
-  .definition p{font-size:15px}
+
+  /* ¿Qué es el abuso sexual? en móvil */
+  .abuse-grid{gap:12px}
+  .abuse-main{padding:34px 24px 30px;border-radius:24px}
+  .abuse-icon{width:128px;height:128px;margin-bottom:26px}
+  .abuse-main h3{font-size:clamp(30px,9vw,38px);margin-bottom:22px}
+  .abuse-tag{font-size:10.5px;margin-bottom:20px;padding-top:18px}
+  .abuse-main .button-yellow{width:100%;max-width:320px}
+  .fact-grid{grid-template-columns:1fr;gap:12px}
+  .fact{border-radius:24px;padding:22px}
+  .fact p{font-size:14.5px}
+
   .concept-panel{min-height:300px;padding:26px;border-radius:24px}
   .concept-panel h3{font-size:28px}
   .concept-text{font-size:14.5px}
@@ -579,12 +655,16 @@ body.menu-open .wa-float{pointer-events:none}
   .prevention-card{padding:14px 14px 22px;border-radius:24px}
   .letter{font-size:54px}
   .prevention-card h4{font-size:23px}
-  .light{border-radius:24px}
-  .light summary{padding:20px 18px 18px;gap:14px}
-  .light ul{padding:2px 18px 22px}
-  .light-link{margin:0 18px 22px}
-  .bulb{flex-basis:44px;width:44px;height:44px}
-  .light h4{font-size:20px}
+
+  /* Semáforo en móvil */
+  .tl-nav{border-radius:24px;padding:18px 6px 14px}
+  .tl-light{width:58px;height:58px}
+  .tl-panel{border-radius:24px;padding:24px 20px 26px}
+  .tl-panel-head{gap:14px;margin-bottom:20px}
+  .tl-bulb{flex-basis:44px;width:44px;height:44px}
+  .tl-panel li{font-size:14.5px}
+  .tl-link{margin-top:24px}
+
   .contact-section{padding-top:48px;padding-bottom:55px}
   .contact-card{padding:30px 22px;min-height:0;border-radius:28px;gap:26px}
   .contact-copy h2{font-size:clamp(45px,12vw,68px)}
@@ -619,6 +699,8 @@ body.menu-open .wa-float{pointer-events:none}
   .route-card{padding:16px;grid-template-columns:58px 1fr}
   .route-badge b{font-size:34px}
   .route-icon{width:46px;height:46px}
+  .tl-light{width:50px;height:50px}
+  .tl-label strong{font-size:11.5px}
   .contact-card{padding:25px 18px}
 }
 
@@ -639,7 +721,7 @@ body.menu-open .wa-float{pointer-events:none}
   html:not(.force-motion) .wa-float,
   html:not(.force-motion) .wa-float-icon:before,
   html:not(.force-motion) .wa-float-icon:after,
-  html:not(.force-motion) .bulb,
+  html:not(.force-motion) .tl-bulb,
   html:not(.force-motion) .pulse,
   html:not(.force-motion) .panel-decoration{animation:none!important}
   html:not(.force-motion) .route-card{scale:1!important}
