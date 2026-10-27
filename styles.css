@@ -170,8 +170,8 @@ details[open] .t-closed{display:none}
 /* ============ CALCOMANÍAS (íconos decorativos en las tarjetas) ============ */
 .sticker{position:absolute;z-index:0;max-width:none;height:auto;pointer-events:none;user-select:none;mix-blend-mode:multiply;opacity:.4}
 .sticker-dove{width:200px;right:-34px;bottom:-30px;transform:rotate(-10deg);opacity:.55}
-.sticker-hands{width:210px;right:-30px;bottom:-58px;transform:rotate(6deg)}
-.sticker-hug{width:170px;right:-28px;bottom:-34px;transform:rotate(-8deg)}
+/* Manos en la tarjeta "Con o sin contacto" */
+.sticker-hands-fact{width:150px;right:-22px;bottom:-30px;transform:rotate(6deg)}
 .has-sticker>*:not(.sticker){position:relative;z-index:1}
 
 /* Equipo */
@@ -249,7 +249,7 @@ details[open] .t-closed{display:none}
 .abuse-main h3 span{display:block;color:var(--yellow)}
 .abuse-tag{width:100%;margin:0 0 22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.24);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
 .fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
-.fact{border-radius:var(--radius);padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:translate .25s ease}
+.fact{position:relative;overflow:hidden;border-radius:var(--radius);padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:translate .25s ease}
 .fact-mint{background:var(--mint)}
 .fact-blue{background:var(--blue)}
 .fact-cream{background:var(--cream)}
@@ -572,7 +572,7 @@ body.menu-open .wa-float{pointer-events:none}
 
   /* Portada en móvil */
   .hero{width:100%;padding:120px 20px 110px}
-  .hero-logo{width:min(440px,90vw);margin-bottom:30px}
+  .hero-logo{width:min(520px,94vw);margin-bottom:30px}
   .hero-badge{font-size:11px;max-width:300px;line-height:1.5;margin-bottom:30px}
   .hero h1{font-size:clamp(21px,6vw,28px);margin-bottom:16px}
   .hero .button-primary{min-width:0;width:100%;max-width:320px}
@@ -592,8 +592,7 @@ body.menu-open .wa-float{pointer-events:none}
   .mission-list li{font-size:15px;grid-template-columns:50px 1fr;gap:14px}
   .mission-icon{width:50px;height:50px}
   .sticker-dove{width:150px;right:-30px;bottom:-24px}
-  .sticker-hands{width:150px;right:-26px;bottom:-40px}
-  .sticker-hug{width:130px;right:-22px;bottom:-26px}
+  .sticker-hands-fact{width:120px;right:-18px;bottom:-24px}
   .tile{border-radius:24px}
 
   /* Inicio en móvil */
@@ -686,11 +685,17 @@ body.menu-open .wa-float{pointer-events:none}
   .wa-float-label{font-size:12px;padding:11px 14px}
 }
 
+/* Logo de portada más grande en celulares (se extiende un poco sobre el margen lateral,
+   la imagen tiene espacio transparente alrededor, así que no se corta el dibujo) */
+@media(max-width:520px){
+  .hero-logo{width:calc(100% + 56px);max-width:none;margin:0 -28px 30px}
+}
+
 /* Celulares muy pequeños */
 @media(max-width:360px){
   .section{width:calc(100% - 22px)}
   .hero{padding:112px 16px 104px}
-  .hero-logo{width:92vw}
+  .hero-logo{width:calc(100% + 44px);margin:0 -22px 26px}
   .hero h1{font-size:20px}
   .section-heading h2{font-size:32px}
   .tile{padding:21px}
