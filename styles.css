@@ -84,6 +84,11 @@ button{font:inherit}
 .button-light:hover,.button-light:focus-visible{background:var(--yellow);color:var(--ink)}
 .button-yellow{background:var(--yellow);color:var(--teal-dark);box-shadow:0 12px 26px rgba(0,0,0,.18)}
 .button-yellow:hover,.button-yellow:focus-visible{background:#fff;color:var(--teal-dark)}
+/* Flecha animada junto al botón "Más información aquí" */
+.cta-row{display:flex;align-items:center;gap:4px;margin-top:10px}
+.cta-row .button{margin-top:0;flex-shrink:0}
+.cta-arrow{width:92px;height:40px;flex-shrink:0;overflow:visible;fill:none;stroke:var(--yellow);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;animation:cta-nudge 1.4s ease-in-out infinite}
+.cta-row:hover .cta-arrow{animation-duration:.7s}
 /* Indicador de scroll: flechita hacia abajo con movimiento */
 .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(0,125,124,.4);background:rgba(255,255,255,.92);color:var(--teal);text-decoration:none;z-index:2;box-shadow:0 8px 20px rgba(20,60,62,.12);animation:bounce-cue 1.8s ease-in-out infinite;transition:background .25s,color .25s}
 .scroll-cue:hover,.scroll-cue:focus-visible{background:var(--teal);color:#fff}
@@ -465,6 +470,7 @@ body.menu-open .wa-float{pointer-events:none}
 
 /* ============ KEYFRAMES ============ */
 @keyframes pop-in{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes cta-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
 @keyframes panel-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes soft-pulse{0%,100%{box-shadow:0 0 0 0 #8cb72c88}50%{box-shadow:0 0 0 10px #8cb72c00}}
 @keyframes float-glow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-22px) scale(1.06)}}
@@ -593,6 +599,7 @@ body.menu-open .wa-float{pointer-events:none}
   .mission-icon{width:50px;height:50px}
   .sticker-dove{width:150px;right:-30px;bottom:-24px}
   .sticker-hands-fact{width:120px;right:-18px;bottom:-24px}
+  .cta-arrow{width:64px;height:30px}
   .tile{border-radius:24px}
 
   /* Inicio en móvil */
@@ -727,6 +734,7 @@ body.menu-open .wa-float{pointer-events:none}
   html:not(.force-motion) .wa-float-icon:before,
   html:not(.force-motion) .wa-float-icon:after,
   html:not(.force-motion) .tl-bulb,
+  html:not(.force-motion) .cta-arrow,
   html:not(.force-motion) .pulse,
   html:not(.force-motion) .panel-decoration{animation:none!important}
   html:not(.force-motion) .route-card{scale:1!important}
